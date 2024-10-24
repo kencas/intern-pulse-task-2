@@ -5,10 +5,18 @@ import cors from "cors";
 import connectDB from "./config/db";
 import { notFound, errorHandler } from "./middlewares/ErrorMiddleware";
 import AuthRoutes from "./routes/AuthRoutes";
+import { AppDataSource } from "./config/app.datasource";
 
 const app: Application = express();
 
 connectDB();
+  AppDataSource.initialize()
+  .then(()=>{
+      console.log("DB Now Running")
+  })
+  .catch(err => {
+      console.log(err)
+  })
 
 app.use(express.json());
 
