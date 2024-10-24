@@ -6,6 +6,8 @@ import connectDB from "./config/db";
 import { notFound, errorHandler } from "./middlewares/ErrorMiddleware";
 import AuthRoutes from "./routes/AuthRoutes";
 import { AppDataSource } from "./config/app.datasource";
+import { ProductController } from "./api/components/products/product.controller";
+import Container from "typedi";
 
 const app: Application = express();
 
@@ -32,6 +34,14 @@ app.get("/api", (req: Request, res: Response) => {
 
 // User Route
 app.use("/api/auth", AuthRoutes);
+
+const productController = Container.get(ProductController);
+app.get('/products/:id', (req, res, next) => productController.getProductById(req, res, next));
+app.put('/products/:id', (req, res, next) => productController.updateProduct(req, res, next));
+app.delete('/products/:id', (req, res, next) => productController.deleteProduct(req, res, next));
+app.get('/products/:code', (req, res, next) => productController.getProductByCode(req, res, next));
+app.post('/products', (req, res, next) => productController.createProduct(req, res, next));
+app.get('/products', (req, res, next) => productController.getProductListing(req, res, next));
 
 // Middleware
 app.use(notFound);
