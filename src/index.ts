@@ -5,6 +5,7 @@ import cors from "cors";
 import connectDB from "./config/db";
 import { notFound, errorHandler } from "./middlewares/ErrorMiddleware";
 import AuthRoutes from "./routes/AuthRoutes";
+import ProductRoutes from "./routes/ProductRoutes";
 import { AppDataSource } from "./config/app.datasource";
 import { ProductController } from "./api/components/products/product.controller";
 import Container from "typedi";
@@ -34,6 +35,7 @@ app.get("/api", (req: Request, res: Response) => {
 
 // User Route
 app.use("/api/auth", AuthRoutes);
+app.use("/api/products", ProductRoutes);
 
 const productController = Container.get(ProductController);
 app.get('/products/:id', (req, res, next) => productController.getProductById(req, res, next));
