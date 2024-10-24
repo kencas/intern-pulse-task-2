@@ -10,5 +10,7 @@ export const {
     DB_NAME,
     DB_HOST,
     DB_PORT,
-    NODE_ENV
+    NODE_ENV,
+    MONGO_URI,
+    JWT_SECRET
   } = <Record<string, string>>process.env;

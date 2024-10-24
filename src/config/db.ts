@@ -1,11 +1,13 @@
 import mongoose, { ConnectOptions } from "mongoose";
+import { MONGO_URI } from "./db.config";
 
 // mongoose.set('strictQuery', false);
 
 const connectDB = async () => {
   try {
+    console.log(MONGO_URI)
     await mongoose.connect(
-      process.env.MONGO_URI as string,
+      MONGO_URI as string,
       {
         //mongodb://localhost:27017/wordle_db
         useNewUrlParser: true,
