@@ -36,6 +36,8 @@ class App {
         
         // User Route
         this.app.use("/api/auth", AuthRoutes);
+
+        this.initRoutes();
         
         // Middleware
         this.app.use(notFound);
