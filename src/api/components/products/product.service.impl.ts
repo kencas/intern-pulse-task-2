@@ -7,9 +7,19 @@ import CustomHttpError from "../../../config/error.handler";
 @Service()
 export class ProductManagementService implements IProductManagementService{
 
-    constructor(private readonly productRepository: ProductRepository) {
+    private readonly productRepository: ProductRepository = ProductRepository.getInstance();
+    private static _instance: ProductManagementService;
+
+    constructor() {
 
     }
+
+    static getInstance() {
+        if (!ProductManagementService._instance) {
+            ProductManagementService._instance = new ProductManagementService();
+        }
+        return ProductManagementService._instance;
+      }
     
     async createProduct(createProduct: ProductDto): Promise<ProductDto> {
         const { error } = validateCreateProduct(createProduct);

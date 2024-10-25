@@ -1,12 +1,11 @@
 import express from "express";
-import { login, register, getAll } from "../controllers/AuthController";
 import Container from "typedi";
-import { ProductController } from "../api/components/products/product.controller";
+import { ProductController, getAll } from "../api/components/products/product.controller";
 
 const router = express.Router();
 
-const controller = Container.get(ProductController);
+const controller = new ProductController();
 
-router.route("/").get(controller.getProductListing).post(controller.createProduct);
+router.route("/").get(getAll).post(controller.createProduct);
 
 export default router;

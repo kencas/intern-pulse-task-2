@@ -5,19 +5,19 @@ import { DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USERNAME } from "./db.config
 
 export const AppDataSource = new DataSource({
     type: "postgres",
-    host: DB_HOST,
-    port: parseInt(DB_PORT),
-    username: DB_USERNAME,
-    password: DB_PASSWORD,
-    database: DB_NAME,
+    host: env.DB_HOST,
+    port: parseInt(env.DB_PORT),
+    username: env.DB_USERNAME,
+    password: env.DB_PASSWORD,
+    database: env.DB_NAME,
     synchronize: true,
-    ssl: true,
-    extra: {
-      ssl: {
-        rejectUnauthorized: false,
-      }
-    },
-    logging: true,
+    // ssl: true,
+    // extra: {
+    //   ssl: {
+    //     rejectUnauthorized: false,
+    //   }
+    // },
+    logging: false,
     entities: [Product],
     subscribers: [],
     cache: true,
