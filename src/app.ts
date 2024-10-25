@@ -5,6 +5,9 @@ import { errorHandler } from "./config/error.handler";
 import { logger } from "./config/logger";
 import { AppDataSource } from "./config/app.datasource";
 import { env } from "./config/global";
+import { notFound } from "./middlewares/ErrorMiddleware";
+import cors from "cors";
+import AuthRoutes from "./routes/AuthRoutes";
 
 class App {
     private app: Application;
@@ -17,11 +20,26 @@ class App {
     constructor() {
       this.app = express();
       
-      this.initMiddlewares();
-      this.initRoutes();
-      this.initErrorHandlers();
+    //   this.initMiddlewares();
+    //   this.initRoutes();
+    //   this.initErrorHandlers();
   
-      
+      // Enable CORS for all routes
+        this.app.use(cors({
+            origin: "*",
+        }));
+        
+        // Default
+        this.app.get("/api", (req: Request, res: Response) => {
+            res.status(201).json({ message: "Welcome to Auth ts" });
+        });
+        
+        // User Route
+        this.app.use("/api/auth", AuthRoutes);
+        
+        // Middleware
+        this.app.use(notFound);
+        this.app.use(errorHandler);
     }
   
     private initRoutes() {
