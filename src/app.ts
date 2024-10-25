@@ -37,7 +37,7 @@ class App {
         
         // User Route
         this.app.use("/api/auth", AuthRoutes);
-        this.app.use("/api/product", ProductRoutes);
+        this.app.use("/api/product", AuthRoutes);
 
         //this.initRoutes();
         
