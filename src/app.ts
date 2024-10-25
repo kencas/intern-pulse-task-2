@@ -8,11 +8,12 @@ import { env } from "./config/global";
 import { notFound } from "./middlewares/ErrorMiddleware";
 import cors from "cors";
 import AuthRoutes from "./routes/AuthRoutes";
+import ProductRoutes from "./routes/ProductRoutes";
 
 class App {
     private app: Application;
 
-    private apiVersion = '/api/v1';
+    private apiVersion = '/api';
     private routes: Record<string, IRoute> = {
       products: new ProductRoute()
     };
@@ -36,8 +37,9 @@ class App {
         
         // User Route
         this.app.use("/api/auth", AuthRoutes);
+        this.app.use("/api/products", ProductRoutes);
 
-        this.initRoutes();
+        //this.initRoutes();
         
         // Middleware
         this.app.use(notFound);
