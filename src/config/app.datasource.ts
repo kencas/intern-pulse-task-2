@@ -2,6 +2,7 @@ import { DataSource } from "typeorm";
 import { Product } from "../api/components/products/product.model";
 import { env } from "./global";
 import { DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USERNAME } from "./db.config";
+import { Book } from "../api/components/books/book.model";
 
 export const AppDataSource = new DataSource({
     type: "postgres",
@@ -18,7 +19,7 @@ export const AppDataSource = new DataSource({
     //   }
     // },
     logging: false,
-    entities: [Product],
+    entities: [Product, Book],
     subscribers: [],
     cache: true,
     "migrations": [

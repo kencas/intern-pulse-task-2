@@ -3,7 +3,7 @@ import { ProductManagementService } from "./product.service.impl";
 import { ProductDto } from "./product.dto";
 import { success } from "../../util/response";
 
-import asyncHandler from "express-async-handler";
+import * as asyncHandler from "express-async-handler";
 const service = ProductManagementService.getInstance();
 
 // @Desc Get all users

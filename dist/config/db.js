@@ -13,10 +13,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
+const db_config_1 = require("./db.config");
 // mongoose.set('strictQuery', false);
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield mongoose_1.default.connect(process.env.MONGO_URI, {
+        console.log(db_config_1.MONGO_URI);
+        yield mongoose_1.default.connect(db_config_1.MONGO_URI, {
             //mongodb://localhost:27017/wordle_db
             useNewUrlParser: true,
             useUnifiedTopology: true,

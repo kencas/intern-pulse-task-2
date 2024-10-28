@@ -2,7 +2,7 @@ import helmet from "helmet";
 import { env } from "../../config/global";
 import cors = require("cors");
 import {Request, Response, NextFunction, Router, json } from "express";
-import * as compression from "compression";
+import compression from "compression";
 import { NODE_ENV } from "../../config/db.config";
 
 /**
