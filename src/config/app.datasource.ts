@@ -2,7 +2,7 @@ import { DataSource } from "typeorm";
 import { Product } from "../api/components/products/product.model";
 import { env } from "./global";
 import { DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USERNAME } from "./db.config";
-import { Book } from "../api/components/books/book.model";
+import { Book } from "../api/components/books/book.entity";
 
 export const AppDataSource = new DataSource({
     type: "postgres",

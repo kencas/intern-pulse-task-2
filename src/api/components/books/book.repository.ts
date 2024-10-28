@@ -1,7 +1,7 @@
 import { Service } from "typedi";
 import { AppDataSource } from "../../../config/app.datasource";
 import { BaseRepository } from "../../base/base.repository";
-import { Book } from "./book.model";
+import { Book } from "./book.entity";
 
 @Service()
 export class BookRepository extends BaseRepository<Book> {
