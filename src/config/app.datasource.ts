@@ -19,7 +19,7 @@ export const AppDataSource = new DataSource({
       }
     },
     logging: false,
-    entities: [Book],
+    entities: [__dirname + '/../../**/*.entity.{js,ts}'],
     subscribers: [],
     cache: true,
     "migrations": [
