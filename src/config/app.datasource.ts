@@ -12,12 +12,12 @@ export const AppDataSource = new DataSource({
     password: env.DB_PASSWORD,
     database: env.DB_NAME,
     synchronize: true,
-    ssl: true,
-    extra: {
-      ssl: {
-        rejectUnauthorized: false,
-      }
-    },
+    // ssl: true,
+    // extra: {
+    //   ssl: {
+    //     rejectUnauthorized: false,
+    //   }
+    // },
     logging: false,
     entities: [__dirname + '/../../**/*.entity.{js,ts}'],
     subscribers: [],
