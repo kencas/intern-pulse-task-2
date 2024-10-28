@@ -3,7 +3,6 @@ import * as express from "express";
 import { IRoute } from "./api/base/route";
 import { ProductRoute } from "./api/components/products/product.route";
 import { errorHandler } from "./config/error.handler";
-import { logger } from "./config/logger";
 import { AppDataSource } from "./config/app.datasource";
 import { env } from "./config/global";
 import * as cors from "cors";
@@ -75,7 +74,7 @@ class App {
       const server = this.app;
 
       server.listen(port, () => {
-        logger.info(`running on port ${port}`);
+        console.log(`running on port ${port}`);
       });
     }
   
