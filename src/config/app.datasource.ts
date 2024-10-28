@@ -18,8 +18,8 @@ export const AppDataSource = new DataSource({
         rejectUnauthorized: false,
       }
     },
-    logging: true,
-    entities: [Product, Book],
+    logging: false,
+    entities: [Book],
     subscribers: [],
     cache: true,
     "migrations": [
