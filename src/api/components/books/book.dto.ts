@@ -38,7 +38,7 @@ export enum BookOperationEnum {
 //     DAMAGED = "DAMAGED"
 // }
 
-export function validateCreateBook(book: BookDto)
+export const validateCreateBook = (book: BookDto) =>
 {
     const JoiSchema = Joi.object({
       
@@ -60,10 +60,10 @@ export function validateCreateBook(book: BookDto)
     }).options({ abortEarly: false });
   
     return JoiSchema.validate(book)
-}
+};
 
 
-export function validateUpdateBook(book: BookDto)
+export const validateUpdateBook = (book: BookDto) =>
 {
     const JoiSchema = Joi.object({
       
@@ -88,7 +88,7 @@ export function validateUpdateBook(book: BookDto)
     return JoiSchema.validate(book)
 }
 
-export function validateBookOperation(bookOperation: BookOperationDto)
+export const validateBookOperation = (bookOperation: BookOperationDto) =>
 {
     const JoiSchema = Joi.object({
       

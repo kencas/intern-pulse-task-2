@@ -1,23 +1,23 @@
 import { Router } from 'express';
 import Container, { Service } from 'typedi';
 import { IRoute } from '../../base/route';
-import { createBook, deleteBook, getAll, getBookByCode, getBookById, performBookOperation, updateBook } from './book.controller';
+import { BookController } from './book.controller';
 
 @Service()
-export class BookRoute extends IRoute{
-	readonly name: string = 'products';
-
+export class BookRoute extends IRoute<BookController>{
+	readonly name: string = 'books';
+	controller = Container.get(BookController)
 
 	initRoutes(): Router {
 		this.router
-		.post('/', createBook)
-		.get('/', getAll);
+		.post('/', this.controller.createBook)
+		.get('/', this.controller.getAll);
 
 		this.router
-		.get('/:id', getBookById)
-		.put('/:id', updateBook)
-		.patch('/:id', performBookOperation)
-		.delete('/:id', deleteBook);
+		.get('/:id', this.controller.getBookById)
+		.put('/:id', this.controller.updateBook)
+		.patch('/:id', this.controller.performBookOperation)
+		.delete('/:id', this.controller.deleteBook);
 
 		return this.router;
 	}

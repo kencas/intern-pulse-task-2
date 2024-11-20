@@ -1,7 +1,6 @@
 import  { Application, Request, Response, NextFunction } from "express";
 import * as express from "express";
 import { IRoute } from "./api/base/route";
-import { ProductRoute } from "./api/components/products/product.route";
 import { errorHandler } from "./config/error.handler";
 import { AppDataSource } from "./config/app.datasource";
 import { env } from "./config/global";
@@ -12,8 +11,7 @@ class App {
     private app: Application;
 
     private apiVersion = '/api/v1';
-    private routes: Record<string, IRoute> = {
-      products: new ProductRoute(),
+    private routes: Record<string, IRoute<any>> = {
       books: new BookRoute()
     };
   
